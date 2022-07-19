@@ -55,3 +55,7 @@ ehPar x = mod x 2 == 0
 
 todosPares :: [Int] -> [Int]
 todosPares l = [x | x <- l , ehPar x]
+
+tamLista :: [Int] -> [Int]
+tamLista [] = 0
+tamLista (x:xs) = 1 + tamLista xs
