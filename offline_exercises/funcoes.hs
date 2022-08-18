@@ -115,3 +115,16 @@ tribonacci = (map trib [0 ..] !!)
         trib 2 = 1
         trib 3 = 2
         trib n = tribonacci n + tribonacci n-1 + tribonacci n-2
+
+{- 12. Defina a função addEspacos que produz um string com uma quantidade n de espaços.
+addEspacos :: Int −> String -}
+
+addEspacos :: Int -> String
+addEspacos 0 = ""
+addEspacos x = " " ++ addEspacos(x-1)
+
+{- 13. Defina a função paraDireita utilizando a definição de addEspacos para adiciconar uma
+quantidade n de espaços à esquerda de um dado String, movendo o mesmo para a direita.
+paraDireita :: Int −> String −> String -}
+paraDireita :: Int -> String -> String
+paraDireita x str = addEspacos (x) ++ str

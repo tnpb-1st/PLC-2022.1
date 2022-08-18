@@ -1,5 +1,6 @@
 -- Pattern matching in list comprehension
 {-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
+import System.Win32 (COORD(x))
 {-# HLINT ignore "Use list literal pattern" #-}
 
 lucky :: (Integral a) => a -> String
@@ -100,3 +101,11 @@ describeList' xs = "The list is " ++ what xs
     where what [] = "empty."
           what [x] = "a singleton list."
           what xs = "a longer list."
+
+-- Chamadas Recursivas com Cauda
+tailFat :: Integer -> Integer -> Integer
+tailFat 1 x = x
+tailFat n x = tailFat (n-1) (n*x)
+
+fat' :: Integer -> Integer
+fat' n = tailFat n 1 
