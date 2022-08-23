@@ -5,11 +5,12 @@ main = do
   y <- getLine
   print $ merge (map (read :: String -> Int) (words x)) (map (read :: String -> Int) (words y))
 
-merge :: Ord a => [a] -> [a] -> [a]
+merge :: [Int] -> [Int] -> [Int]
 merge [] [] = []
-merge [a] [] = [a]
-merge [] [a] = [a]
-merge (h1:t1) (h2:t2) = [lower h1 h2] ++ [greater h1 h2] ++ merge t1 t2
+merge a [] = a
+merge [] b = b
+merge (ha:ta) (hb:tb)
+  | ha <= hb = ha : merge ta (hb:tb)
+  | otherwise = hb : merge (ha:ta) tb
   where
-    lower a b = if a <= b then a else b
-    greater a b = if a >= b then a else b
+    res = []
